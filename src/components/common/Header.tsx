@@ -21,10 +21,16 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50"
+          className="flex items-center gap-2"
         >
-          <span className="text-blue-600 dark:text-blue-400">G</span>üncel{" "}
-          <span className="text-blue-600 dark:text-blue-400">T</span>eknoloji
+          <img
+            src="/favicon.png"
+            alt="GT"
+            className="h-8 w-8"
+          />
+          <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Güncel Teknoloji
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
