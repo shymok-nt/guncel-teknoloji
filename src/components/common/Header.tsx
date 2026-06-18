@@ -24,7 +24,7 @@ export default function Header() {
           className="flex items-center gap-2"
         >
           <img
-            src="/favicon.png"
+            src="/favicon.svg"
             alt="GT"
             className="h-8 w-8"
           />
