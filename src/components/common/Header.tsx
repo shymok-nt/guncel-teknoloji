@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/donanim", label: "Donanım" },
   { href: "/mobil", label: "Mobil" },
   { href: "/yazilim", label: "Yazılım" },
+  { href: "/oyun", label: "Oyun" },
 ];
 
 export default function Header() {

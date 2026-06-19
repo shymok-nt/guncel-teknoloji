@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "bot:fetch": "npx tsx src/scripts/fetch-news.ts",
-    "bot:cleanup": "npx tsx src/scripts/cleanup-db.ts"
+    "bot:cleanup": "npx tsx src/scripts/cleanup-db.ts",
+    "fix:categories": "npx tsx src/scripts/fix-categories.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

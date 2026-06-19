@@ -21,13 +21,15 @@ const CATEGORY_RULES: { slug: string; keywords: string[] }[] = [
     ],
   },
   {
-    slug: "donanim",
+    slug: "oyun",
     keywords: [
-      "donanım", "işlemci", "cpu", "gpu", "ekran kartı",
-      "ram", "bellek", "ssd", "hard disk", "anakart",
-      "klavye", "fare", "monitör", "kasa", "soğutma",
+      "oyun", "game", "gaming", "playstation", "xbox",
+      "nintendo", "steam", "epic games", "pc oyun",
+      "konsol", "vr", "sanal gerçeklik", "e-spor",
+      "oyun motoru", "unity", "unreal", "oyuncu",
+      "işlemci", "cpu", "gpu", "ekran kartı",
       "intel", "amd", "nvidia", "ryzen", "core", "rtx",
-      "m2", "nvme", "pcie", "usb", "thunderbolt",
+      "donanım", "ram", "bellek", "anakart",
     ],
   },
   {
@@ -38,35 +40,7 @@ const CATEGORY_RULES: { slug: string; keywords: string[] }[] = [
       "nobel", "araştırma", "keşif", "deney", "teori",
       "evren", "gezegen", "yıldız", "karadelik", "teleskop",
       "hubble", "jwst", "mars", "ay", "roket",
-    ],
-  },
-  {
-    slug: "mobil",
-    keywords: [
-      "mobil", "telefon", "iphone", "ios", "android",
-      "samsung", "xiaomi", "huawei", "akıllı telefon",
-      "tablet", "katlanabilir", "5g", "6g", "ekran",
-      "batarya", "şarj", "kamera", "sensör", "parmak izi",
-      "yüz tanıma", "oled", "amoled", "lcd",
-    ],
-  },
-  {
-    slug: "oyun",
-    keywords: [
-      "oyun", "game", "gaming", "playstation", "xbox",
-      "nintendo", "steam", "epic games", "pc oyun",
-      "konsol", "vr", "sanal gerçeklik", "e-spor",
-      "oyun motoru", "unity", "unreal", "oyuncu",
-    ],
-  },
-  {
-    slug: "guvenlik",
-    keywords: [
-      "güvenlik", "security", "siber", "hack", "hacker",
-      "virüs", "malware", "ransomware", "şifre", "password",
-      "kimlik avı", "phishing", "gizlilik", "privacy",
-      "vpn", "firewall", "güvenlik duvarı", "açık", "zafiyet",
-      "exploit", "zero day", "sıfırıncı gün", "ddos",
+      "telegram", "vpn", "sosyal medya", "yasak",
     ],
   },
 ];
@@ -91,9 +65,9 @@ export function guessCategory(text: string): string {
       return scores[0].slug;
     }
 
-    return "teknoloji";
+    return "bilim";
   } catch {
-    return "teknoloji";
+    return "bilim";
   }
 }
 
