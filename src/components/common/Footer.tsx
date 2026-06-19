@@ -114,7 +114,7 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-800">
           <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
-            &copy; {new Date().getFullYear()} Güncel Teknoloji. Tüm hakları
+            &copy; {new Date().getFullYear()} Güncel Tekno. Tüm hakları
             saklıdır.
           </p>
         </div>

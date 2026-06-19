@@ -29,7 +29,7 @@ export default function Header() {
             className="h-8 w-8"
           />
           <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Güncel Teknoloji
+            Güncel Tekno
           </span>
         </Link>
 

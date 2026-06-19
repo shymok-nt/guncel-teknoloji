@@ -33,7 +33,7 @@ const NewsSchema = new Schema<INews>(
     },
     author: {
       type: String,
-      default: "Güncel Teknoloji Editörü",
+      default: "Güncel Tekno Editörü",
     },
     sourceUrl: {
       type: String,

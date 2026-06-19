@@ -172,7 +172,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
                     mainImage: image,
                     category: category._id,
                     seoKeywords,
-                    author: "Güncel Teknoloji Editörü",
+                    author: "Güncel Tekno Editörü",
                     ...(articleUrl ? { sourceUrl: articleUrl } : {}),
                   },
                 }
@@ -205,7 +205,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
               summary,
               mainImage: image,
               category: category._id,
-              author: "Güncel Teknoloji Editörü",
+              author: "Güncel Tekno Editörü",
               ...(articleUrl ? { sourceUrl: articleUrl } : {}),
               views: 0,
               isPublished: true,
@@ -214,7 +214,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
             });
             result.added++;
             console.log(
-              `  ✓ Türkçe haber kaydedildi: "${finalTitle.slice(0, 50)}..." | yazar: Güncel Teknoloji Editörü | ${finalContent.length} karakter`
+              `  ✓ Türkçe haber kaydedildi: "${finalTitle.slice(0, 50)}..." | yazar: Güncel Tekno Editörü | ${finalContent.length} karakter`
             );
           }
           itemCount++;
@@ -243,7 +243,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
 }
 
 async function main() {
-  console.log("=== Güncel Teknoloji - Haber Çekme Botu ===");
+  console.log("=== Güncel Tekno - Haber Çekme Botu ===");
   console.log(`Başlangıç: ${new Date().toLocaleString("tr-TR")}\n`);
 
   const testFlag = process.argv.includes("--test");

@@ -42,7 +42,7 @@ export default async function HomePage() {
       <AdBanner className="mb-8" />
 
       <section className="mb-10">
-        <h1 className="sr-only">Güncel Teknoloji Haberleri</h1>
+        <h1 className="sr-only">Güncel Tekno Haberleri</h1>
         {mainNews ? (
           <HeroSection mainNews={mainNews} sideNews={sideNews} />
         ) : (

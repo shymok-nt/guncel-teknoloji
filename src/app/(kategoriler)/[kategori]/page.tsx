@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `https://www.guncelteknoloji.com/${kategori}`,
     },
     openGraph: {
-      title: `${cat.name} Haberleri | Güncel Teknoloji`,
+      title: `${cat.name} Haberleri | Güncel Tekno`,
       description:
         cat.description ||
         `En güncel ${cat.name.toLowerCase()} haberleri, gelişmeleri ve analizleri.`,
       url: `https://www.guncelteknoloji.com/${kategori}`,
       type: "website",
       locale: "tr_TR",
-      siteName: "Güncel Teknoloji",
+      siteName: "Güncel Tekno",
     },
   };
 }

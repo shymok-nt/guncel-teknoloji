@@ -26,8 +26,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Güncel Teknoloji - Güncel Teknoloji Haberleri",
-    template: "%s | Güncel Teknoloji",
+    default: "Güncel Tekno - Güncel Tekno Haberleri",
+    template: "%s | Güncel Tekno",
   },
   description:
     "Teknoloji dünyasındaki en son gelişmeler, yapay zeka, yazılım, donanım, bilim ve dijital dönüşüm haberlerini takip edin. Güncel ve güvenilir teknoloji haberciliği.",
@@ -41,15 +41,15 @@ export const metadata: Metadata = {
     "bilim",
     "dijital",
   ],
-  authors: [{ name: "Güncel Teknoloji" }],
-  creator: "Güncel Teknoloji",
-  publisher: "Güncel Teknoloji",
+  authors: [{ name: "Güncel Tekno" }],
+  creator: "Güncel Tekno",
+  publisher: "Güncel Tekno",
   metadataBase: new URL("https://www.guncelteknoloji.com"),
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    siteName: "Güncel Teknoloji",
-    title: "Güncel Teknoloji - Güncel Teknoloji Haberleri",
+    siteName: "Güncel Tekno",
+    title: "Güncel Tekno - Güncel Tekno Haberleri",
     description:
       "Teknoloji dünyasındaki en son gelişmeler, yapay zeka, yazılım, donanım, bilim ve dijital dönüşüm haberlerini takip edin.",
     url: "https://www.guncelteknoloji.com",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@guncelteknoloji",
     creator: "@guncelteknoloji",
-    title: "Güncel Teknoloji - Güncel Teknoloji Haberleri",
+    title: "Güncel Tekno - Güncel Tekno Haberleri",
     description:
       "Teknoloji dünyasındaki en son gelişmeler, yapay zeka, yazılım, donanım, bilim ve dijital dönüşüm haberlerini takip edin.",
   },

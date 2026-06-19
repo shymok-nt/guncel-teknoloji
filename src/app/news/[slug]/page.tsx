@@ -46,19 +46,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     keywords: haber.seoKeywords,
     openGraph: {
-      title: `${haber.title} | Güncel Teknoloji`,
+      title: `${haber.title} | Güncel Tekno`,
       description: haber.summary,
       url: `https://www.guncelteknoloji.com/news/${slug}`,
       type: "article",
       locale: "tr_TR",
-      siteName: "Güncel Teknoloji",
+      siteName: "Güncel Tekno",
       images: haber.mainImage ? [{ url: haber.mainImage }] : [],
       publishedTime: haber.publishedAt?.toISOString(),
       modifiedTime: haber.updatedAt?.toISOString(),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${haber.title} | Güncel Teknoloji`,
+      title: `${haber.title} | Güncel Tekno`,
       description: haber.summary,
       images: haber.mainImage ? [haber.mainImage] : [],
     },
@@ -191,7 +191,7 @@ export default async function NewsDetailPage({ params }: Props) {
             </h1>
 
             <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
-              <span>Güncel Teknoloji</span>
+              <span>Güncel Tekno</span>
               <span>&middot;</span>
               <time dateTime={haber.publishedAt?.toISOString() ?? haber.createdAt.toISOString()}>
                 {publishedDate}
