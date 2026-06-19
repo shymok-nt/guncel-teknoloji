@@ -157,7 +157,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
             if (existingLen < SHORT_CONTENT_THRESHOLD) {
               const summary = extractSummary(finalContent);
               const seoKeywords = extractKeywords(`${finalTitle} ${finalContent}`);
-              const categorySlug = guessCategory(`${finalTitle} ${finalContent}`);
+              const categorySlug = aiResult.category || guessCategory(`${finalTitle} ${finalContent}`);
               const category = await ensureCategory(categorySlug);
               const image = mainImage || getDefaultImage(categorySlug, itemCount);
 
@@ -188,7 +188,7 @@ export async function fetchNews(maxPerSource = 0): Promise<{
             const summary = extractSummary(finalContent);
             const seoKeywords = extractKeywords(`${finalTitle} ${finalContent}`);
 
-            const categorySlug = guessCategory(`${finalTitle} ${finalContent}`);
+            const categorySlug = aiResult.category || guessCategory(`${finalTitle} ${finalContent}`);
             const category = await ensureCategory(categorySlug);
             const image = mainImage || getDefaultImage(categorySlug, itemCount);
 

@@ -4,15 +4,29 @@ const SYSTEM_PROMPT = `Sen profesyonel bir teknoloji editörüsün. Sana verilen
 
 Yazdigin Türkçe makaleyi asla yarida kesme. Giris, gelisme ve sonuç paragraflari tam olan, son noktasi konulmus, eksiksiz ve bütünsel bir haber metni teslim et.
 
+Haberin kategorisini belirlerken su kurallara KESINLIKLE uy:
+- Kullanilabilir kategoriler (slug): yazilim, yapay-zeka, donanim, mobil, oyun, bilim, guvenlik, teknoloji
+- ASLA "bilim" secme: Valve, Steam, PlayStation, Xbox, Nintendo, Epic Games, oyun, konsol, islemci (CPU, AMD, Intel), ekran karti (GPU, NVIDIA, RTX), bilgisayar bileseni, overclock, sogutma, kasa, anakart ile ilgili haberlerde
+- SADECE su konular "bilim" olarak etiketlenir: uzay, astronomi, fizik, kimya, biyoloji, genetik, NASA, uzay araci, kesif, deney, teorik arastirma, gozlem, teleskop
+- Oyun haberleri (konsol, oyun magazasi, oyun lansmani) -> "oyun"
+- Donanim haberleri (islemci, ekran karti, bilgisayar bileseni) -> "donanim"
+- Mobil cihaz haberleri -> "mobil"
+- Yapay zeka haberleri -> "yapay-zeka"
+- Yazilim/gelistirici haberleri -> "yazilim"
+- Siber guvenlik haberleri -> "guvenlik"
+- Yukaridakilerin hicbirine uymuyorsa -> "teknoloji"
+
 Yanitini sadece asagidaki geçerli JSON formatinda ver, baska hiçbir metin ekleme. JSON içinde yeni satir veya sekme gibi kontrol karakterleri KULLANMA:
 {
   "title": "Türkçe ve dikkat çekici yeni baslik",
-  "content": "tamamen Türkçe yeniden yazilmis, paragraflari <p> etiketiyle ayrilmis HTML haber metni (en az 500 kelime). Metin içinde yeni satir karakteri kullanma, tüm <p> etiketleri tek bir satirda olsun."
+  "content": "tamamen Türkçe yeniden yazilmis, paragraflari <p> etiketiyle ayrilmis HTML haber metni (en az 500 kelime). Metin içinde yeni satir karakteri kullanma, tüm <p> etiketleri tek bir satirda olsun.",
+  "category": "uygun-kategori-slogu"
 }`;
 
 interface RewriteResult {
   title: string;
   content: string;
+  category: string;
   success: boolean;
 }
 
@@ -38,7 +52,7 @@ async function attemptRewrite(
   originalTitle: string,
   originalContent: string,
   attempt: number
-): Promise<{ title: string; content: string } | null> {
+): Promise<{ title: string; content: string; category: string } | null> {
   try {
     const response = await groq.chat.completions.create({
       model: "llama-3.3-70b-versatile",
@@ -69,12 +83,14 @@ async function attemptRewrite(
 
     let newTitle = originalTitle;
     let newContent = originalContent;
+    let newCategory = "teknoloji";
     let parsed = false;
 
     try {
       const data = JSON.parse(rawJson);
       newTitle = data.title?.trim() || originalTitle;
       newContent = data.content?.trim() || originalContent;
+      newCategory = data.category?.trim() || "teknoloji";
       parsed = true;
     } catch {
       try {
@@ -97,6 +113,11 @@ async function attemptRewrite(
           }
         }
 
+        const categoryMatch = rawJson.match(/"category"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+        if (categoryMatch) {
+          newCategory = categoryMatch[1].replace(/\\n/g, " ").replace(/\\"/g, '"').trim() || "teknoloji";
+        }
+
         if (titleMatch || contentKeyIdx !== -1) {
           parsed = true;
         }
@@ -110,7 +131,7 @@ async function attemptRewrite(
         console.warn(`  ! Türkçe dogrulama basarisiz (deneme ${attempt})`);
         return null;
       }
-      return { title: newTitle, content: newContent };
+      return { title: newTitle, content: newContent, category: newCategory };
     }
 
     console.warn(`  ! JSON parse edilemedi (deneme ${attempt})`);
@@ -133,7 +154,7 @@ export async function rewriteWithGroq(
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     console.warn("  ! GROQ_API_KEY bulunamadi, haber atlaniyor");
-    return { title: originalTitle, content: originalContent, success: false };
+    return { title: originalTitle, content: originalContent, category: "teknoloji", success: false };
   }
 
   const groq = new Groq({ apiKey });
@@ -150,10 +171,10 @@ export async function rewriteWithGroq(
       console.log(
         `  ✦ Groq Türkçe yazildi: "${result.title.slice(0, 50)}..." (${result.content.length} karakter)`
       );
-      return { title: result.title, content: result.content, success: true };
+      return { title: result.title, content: result.content, category: result.category, success: true };
     }
   }
 
   console.warn("  ! Tum Groq denemeleri basarisiz, haber atlaniyor");
-  return { title: originalTitle, content: originalContent, success: false };
+  return { title: originalTitle, content: originalContent, category: "teknoloji", success: false };
 }
