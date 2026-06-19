@@ -16,25 +16,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/hakkimizda`,
       lastModified: new Date(),
       changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/kunye`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/iletisim`,
       lastModified: new Date(),
       changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gizlilik-politikasi`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/kullanim-kosullari`,
       lastModified: new Date(),
       changeFrequency: "yearly",
-      priority: 0.1,
-    },
-    {
-      url: `${baseUrl}/gizlilik-politikasi`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.1,
+      priority: 0.3,
     },
   ];
 
